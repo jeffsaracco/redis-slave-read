@@ -13,7 +13,7 @@ module ActiveSupport
         options = merged_options(options)
         instrument(:write, name, options) do |payload|
           entry = options[:raw].present? ? value : Entry.new(value, options)
-          write_entry(namespaced_key(name, options), entry, options)
+          write_entry(normalize_key(name, options), entry, options)
         end
       end
 
